@@ -1,7 +1,9 @@
-%h1 Editing question
+.ui.top.attached.segment
+  = link_to questions_path do
+    %button.ui.basic.button
+      %i.icon.arrow.left
+      Back
+.ui.attached.segment
+  %h1 Editing question
 
-= render 'form'
-
-= link_to 'Show', @question
-\|
-= link_to 'Back', questions_path
+  = render 'form'
