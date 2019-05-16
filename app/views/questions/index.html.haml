@@ -1,4 +1,10 @@
 .ui.top.attached.segment
+  = link_to new_question_path do
+    %button.ui.positive.basic.button
+      %i.icon.plus
+      New Question
+
+.ui.bottom.attached.segment
   %h1 Listing questions
 
   %table.ui.very.basic.table
@@ -20,8 +26,3 @@
             = link_to 'Edit', edit_question_path(question), class: "ui mini blue button"
             = link_to 'Destroy', question, class: "ui mini orange button", method: :delete, data: { :confirm => 'Are you sure?' }
 
-.ui.bottom.attached.segment
-  = link_to new_question_path do
-    %button.ui.positive.basic.button
-      %i.icon.plus
-      New Question
