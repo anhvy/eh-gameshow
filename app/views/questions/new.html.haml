@@ -1,0 +1,9 @@
+.ui.top.attached.segment
+  = link_to questions_path do
+    %button.ui.basic.button
+      %i.icon.arrow.left
+      Back
+.ui.bottom.attached.segment
+  %h1 New question
+
+  = render 'form'

@@ -1,0 +1,54 @@
+//---------------------
+// Sizes
+//---------------------
+
+$spaceTypes: ('m': "margin", 'p': "padding");
+
+$spaceSizes: (
+  'none':   0,
+  'tiny':   0.25em,
+  'mini':   0.5em,
+  'small':  1em,
+  'medium': 2em,
+  'big':    3em
+);
+
+//---------------------
+// Properties
+//---------------------
+
+$ip: !important;
+
+//---------------------
+// Core
+//---------------------
+
+.ui.segment {
+  border: none;
+  -webkit-box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.08);
+  -moz-box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.08);
+  border-radius: 0.75em;
+}
+
+@each $type, $value in $spaceTypes {
+  @each $prop, $size in $spaceSizes {
+    .#{$type}-#{$prop} {
+      &--all {
+        #{$value}: $size $ip;
+      }
+      &--top, &--ends {
+        #{$value}-top: $size $ip;
+      }
+      &--bottom, &--ends {
+        #{$value}-bottom: $size $ip;
+      }
+      &--left, &--sides {
+        #{$value}-left: $size $ip;
+      }
+      &--right, &--sides {
+        #{$value}-right: $size $ip;
+      }
+    }
+  }
+}
