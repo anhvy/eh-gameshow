@@ -1,0 +1,16 @@
+= form_for @round, html: {class: "ui form"} do |f|
+  - if @round.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@round.errors.count, "error")} prohibited this round from being saved:"
+      %ul
+        - @round.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :episode_id
+    = f.number_field :episode_id
+  .field
+    = f.label :question_ids
+    = f.text_area :question_ids
+  .actions
+    = f.submit 'Save', class: "ui primary button"

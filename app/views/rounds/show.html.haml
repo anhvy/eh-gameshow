@@ -1,0 +1,31 @@
+- if notice.present?
+  #notice.ui.message= notice
+
+.ui.top.attached.segment
+  = link_to rounds_path do
+    %button.ui.basic.button
+      %i.arrow.left.icon
+      Back
+.ui.attached.segment
+  %h3.ui.header Episode ##{@round.episode_id}
+  %table.ui.very.basic.table
+    %thead
+      %th Question
+      %th
+    %tbody
+      - @questions.each do |question|
+        %tr
+          %td= question.content
+          %td.right.aligned
+            %button.ui.small.button.set_question_btn{"data-question-id": question.id} Broadcast
+
+:javascript
+  $(function(){
+    actionPath = '#{set_broadcast_question_rounds_path}';
+    $csrf = $('meta[name="csrf-token"]').attr('content');
+    $('.set_question_btn').click(function(){
+      $('.set_question_btn').removeClass('positive');
+      $.post(actionPath, {question_id: $(this).data("question-id"), authenticity_token: $csrf});
+      $(this).addClass('positive');
+    });
+  })

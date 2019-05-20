@@ -1,0 +1,17 @@
+#fullscreen.wrapper
+  %video#gum-local.video{:autoplay => "", :playsinline => ""}
+  .sidebar
+    %p #score
+  .content
+    .empty-space
+    .question
+      %h2.ui.header.content #question
+
+:javascript
+  document.addEventListener('DOMContentLoaded', function () {
+    initVideo();
+    var sse = new EventSource('/rounds/broadcasted_question');
+    sse.addEventListener('message', function (e) {
+      $(".question .content").text(e.data)
+    });
+  });

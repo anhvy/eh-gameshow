@@ -1,0 +1,28 @@
+.ui.top.attached.segment
+  = link_to new_round_path do
+    %button.ui.positive.basic.button
+      %i.icon.plus
+      New Round
+
+.ui.bottom.attached.segment
+  %h1 Listing rounds
+
+  %table.ui.very.basic.table
+    %thead
+      %tr
+        %th Episode
+        %th Question ids
+        %th
+        %th
+        %th
+
+    %tbody
+      - @rounds.each do |round|
+        %tr
+          %td= round.episode_id
+          %td= round.question_ids
+          %td.four.wide.right.aligned
+            = link_to 'Show', round, class: "ui mini button"
+            = link_to 'Edit', edit_round_path(round), class: "ui mini blue button"
+            = link_to 'Destroy', round, class: "ui mini orange button", method: :delete, data: { :confirm => 'Are you sure?' }
+

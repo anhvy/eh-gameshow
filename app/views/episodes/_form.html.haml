@@ -1,0 +1,15 @@
+= form_for @episode, html: {class: "ui form"} do |f|
+  - if @episode.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@episode.errors.count, "error")} prohibited this episode from being saved:"
+      %ul
+        - @episode.errors.full_messages.each do |msg|
+          %li= msg
+
+  .fields.p-mini--sides
+    = f.datetime_select :happen_date, class: 'field'
+  .field
+    = f.label :team_ids
+    = f.text_field :team_ids, multiple: true
+  .actions
+    = f.submit 'Save', class: 'ui primary button'

@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Happen date:
+  = @episode.happen_date
+%p
+  %b Team ids:
+  = @episode.team_ids
+
+= link_to 'Edit', edit_episode_path(@episode)
+\|
+= link_to 'Back', episodes_path
