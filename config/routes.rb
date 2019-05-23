@@ -2,7 +2,12 @@ Rails.application.routes.draw do
   root 'homes#index'
 
   resources :episodes
-  resources :questions
+  resources :questions do
+    collection do
+      get :import
+    end
+  end
+
 
   resources :homes, path: '/game' do
     collection do
