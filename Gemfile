@@ -68,3 +68,5 @@ gem 'redis'
 source 'https://rails-assets.org' do
   gem 'rails-assets-semantic'
 end
+
+gem "google-api-client", "~> 0.29.2"
