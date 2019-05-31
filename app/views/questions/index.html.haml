@@ -20,8 +20,10 @@
       - @questions.each do |question|
         %tr
           %td.eight.wide= question.content
-          %td.four.wide= question.acceptable_answers
-          %td.four.wide.right.aligned
-            = link_to 'Show', question, class: "ui mini button"
-            = link_to 'Edit', edit_question_path(question), class: "ui mini blue button"
-            = link_to 'Destroy', question, class: "ui mini orange button", method: :delete, data: { :confirm => 'Are you sure?' }
+          -# %td.four.wide= question.acceptable_answers
+          %td.four.wide I won't let you know!
+          %td.four.wide
+          -# %td.four.wide.right.aligned
+          -#   = link_to 'Show', question, class: "ui mini button"
+          -#   = link_to 'Edit', edit_question_path(question), class: "ui mini blue button"
+          -#   = link_to 'Destroy', question, class: "ui mini orange button", method: :delete, data: { :confirm => 'Are you sure?' }
