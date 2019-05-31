@@ -42,14 +42,21 @@
     padding: 1em;
     height: 160px;
     display: flex;
-    border-radius: 1em;
+    color: #ffffff;
+    border-radius: 0.5em;
     align-items: center;
+    background: #232526;
     justify-content: center;
-    background: url(asset_path('lower.svg')) no-repeat 50% 0%;
-    background-size: cover;
+    border: 5px solid #16a085;
+    background: -webkit-linear-gradient(to right, #414345, #232526);
+    background: linear-gradient(to right, #414345, #232526);
+    box-shadow: 0 13px 27px -5px rgba(50,50,93,.25), 0 8px 16px -8px rgba(0,0,0,.3), 0 -6px 16px -6px rgba(0,0,0,.025);
+    // background: url(asset_path('lower.svg')) no-repeat 50% 0%;
+    // background-size: cover;
   }
 
   .content .question .header {
-    margin-top: 0.5em;
+    font-size: 30px;
+    color: #ffffff;
   }
 }
