@@ -70,6 +70,7 @@ class RoundsController < ApplicationController
   def set_broadcast_question
     redis = Redis.new
     redis.publish('round:question_id', params[:question_id])
+    redis.quit
     render status: 200, json:{success: true}
   end
 
