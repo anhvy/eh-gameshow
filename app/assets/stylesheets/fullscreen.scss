@@ -20,12 +20,30 @@
 
   .sidebar {
     z-index: 2;
-    display: flex;
+    display: grid;
+    overflow: hidden;
     border-radius: 1em;
     background: #ffffff;
+    grid-auto-flow: dense;
+    grid-template-rows: repeat(10, 1fr);
+    box-shadow: 0 13px 27px -5px rgba(50,50,93,.25), 0 8px 16px -8px rgba(0,0,0,.3), 0 -6px 16px -6px rgba(0,0,0,.025);
+  }
+
+  .sidebar .block {
+    display: flex;
+    font-size: 1.5em;
+    font-weight: 600;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 13px 27px -5px rgba(50,50,93,.25), 0 8px 16px -8px rgba(0,0,0,.3), 0 -6px 16px -6px rgba(0,0,0,.025);
+  }
+
+  .sidebar .block:not(:last-child) {
+    border-bottom: 1px solid #000;
+  }
+
+  .sidebar .block.active {
+    color: #ffffff;
+    background: #27ae60;
   }
 
   .content {

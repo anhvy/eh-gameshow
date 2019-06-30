@@ -67,6 +67,21 @@ class RoundsController < ApplicationController
     sse.close
   end
 
+  def current_score
+    redis = Redis.new
+    sse = SSE.new(response.stream)
+    response.headers['Content-Type'] = 'text/event-stream'
+    redis.subscribe('round:score') do |on|
+      on.message do |e, data|
+        sse.write(data)
+      end
+    end
+  rescue IOError
+  ensure
+    redis.quit
+    sse.close
+  end
+
   def set_broadcast_question
     redis = Redis.new
     redis.publish('round:question_id', params[:question_id])

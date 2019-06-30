@@ -1,7 +1,8 @@
 #fullscreen.wrapper
   %video#gum-local.video{:autoplay => "", :playsinline => ""}
   .sidebar
-    %p #score
+    - (1..10).reverse_each do |i|
+      .block{class: "score-#{i}"}= i
   .content
     .empty-space
     .question
@@ -10,8 +11,17 @@
 :javascript
   document.addEventListener('DOMContentLoaded', function () {
     initVideo();
-    var sse = new EventSource('/rounds/broadcasted_question');
-    sse.addEventListener('message', function (e) {
+    var question_sse = new EventSource('/rounds/broadcasted_question');
+    question_sse.addEventListener('message', function (e) {
       $(".question .content").text(e.data)
+    });
+
+    var score_sse = new EventSource('/rounds/current_score');
+    score_sse.addEventListener('message', function (e) {
+      score = parseInt(e.data)
+      $(".sidebar .block").removeClass('active');
+      for (i = 0; i <= score; i++) {
+        $(".sidebar .score-" + i).addClass('active')
+      }
     });
   });
