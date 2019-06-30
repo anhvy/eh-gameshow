@@ -11,11 +11,13 @@
   %table.ui.very.basic.table
     %thead
       %th Question
+      %th Solution
       %th
     %tbody
       - @questions.each do |question|
         %tr
           %td= question.content
+          %td= question.acceptable_answers
           %td.right.aligned
             %button.ui.small.button.set_question_btn{"data-question-id": question.id} Broadcast
 
