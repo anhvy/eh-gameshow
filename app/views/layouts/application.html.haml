@@ -8,4 +8,7 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     %meta{:content => "width=device-width, initial-scale=1, shrink-to-fit=no", :name => "viewport"}/
   %body
+    = content_tag :div, notice, class: ["ui", "message", "info"] if notice.present?
+    = content_tag :div, alert, class: ["ui", "message", "danger"] if alert.present?
     .ui.fluid.container= yield
+    = link_to 'Logout', destroy_user_session_path, method: :delete if signed_in?

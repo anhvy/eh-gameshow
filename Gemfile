@@ -70,3 +70,4 @@ source 'https://rails-assets.org' do
 end
 
 gem "google-api-client", "~> 0.29.2"
+gem "devise"
