@@ -10,28 +10,24 @@ Rails.application.routes.draw do
     end
   end
 
-  # Currently we use ActionController::Live which cause warden error,
-  # so I put authentication here as a work around solution
-  authenticate do
-    resources :episodes
+  resources :episodes
 
-    # resources :rounds do
-    #   collection do
-    #     get 'broadcasted_question'
-    #     get 'current_score'
-    #     post 'set_broadcast_question'
-    #   end
-    # end
-
-    resources :questions do
-      collection do
-        get :import
-        match :assign, via: [:get, :post]
-      end
+  resources :questions do
+    collection do
+      get :import
+      match :assign, via: [:get, :post]
     end
   end
 
   resources :rounds do
+    collection do
+      get 'broadcasted_question'
+      get 'current_score'
+      post 'set_broadcast_question'
+    end
+  end
+
+  resources :broadcasts do
     collection do
       get 'broadcasted_question'
       get 'current_score'
