@@ -1,0 +1,32 @@
+// Override Semantic UI style
+
+.ui.header {
+  color: #2c3e50;
+  font-weight: 600;
+  font-family: 'Open Sans', sans-serif;
+}
+
+// Custom style
+
+.landing_page {
+  height: 100vh;
+  display: flex!important;
+  align-items: center;
+
+  .navigation {
+    .item {
+      display: flex;
+      color: #34495e;
+      align-items: center;
+      margin-bottom: 1em;
+    }
+
+    .item img {
+      margin-right: 1em;
+    }
+
+    .item:hover {
+      color: #2980b9;
+    }
+  }
+}

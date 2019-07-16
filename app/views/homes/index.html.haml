@@ -1,4 +1,24 @@
-= link_to "Questions", questions_path, class: "ui button"
-= link_to "Episodes", episodes_path, class: "ui button"
-= link_to "Rounds", rounds_path, class: "ui button"
-= link_to "Streaming", streaming_homes_path, class: "ui button"
+.ui.container
+  .landing_page
+    .ui.middle.aligned.grid{style: "margin: auto"}
+      .nine.wide.column
+        = image_tag "illustration.png", class: "ui image"
+      .six.wide.column
+        %h2.ui.header.m-medium--bottom EH Gameshow: Fast as F**
+        .ui.list.middle.aligned.navigation
+          = link_to questions_path do
+            .item
+              = image_tag "icon-book.svg", height: 30
+              Questions
+          = link_to episodes_path do
+            .item
+              = image_tag "icon-planner.svg", height: 30
+              Episodes
+          = link_to rounds_path do
+            .item
+              = image_tag "icon-focus.svg", height: 30
+              Rounds
+          = link_to streaming_homes_path do
+            .item
+              = image_tag "icon-network.svg", height: 30
+              Streaming
