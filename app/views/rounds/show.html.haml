@@ -1,25 +1,40 @@
-- if notice.present?
-  #notice.ui.message= notice
+= link_to rounds_path do
+  %button.ui.basic.button
+    %i.arrow.left.icon
+    Back
 
-.ui.top.attached.segment
-  = link_to rounds_path do
-    %button.ui.basic.button
-      %i.arrow.left.icon
-      Back
-.ui.attached.segment
-  %h3.ui.header Episode ##{@round.episode_id}
-  %table.ui.very.basic.table
-    %thead
-      %th Question
-      %th Solution
-      %th
-    %tbody
-      - @questions.each do |question|
-        %tr
-          %td= question.content
-          %td= question.acceptable_answers
-          %td.right.aligned
-            %button.ui.small.button.set_question_btn{"data-question-id": question.id} Broadcast
+.ui.grid
+  .fourteen.wide.column
+    .ui.top.attached.secondary.segment.m-small--top
+      %h3.ui.header ROUND ##{@round.id} QUESTIONS:
+    .ui.bottom.attached.segment
+      %table.ui.very.basic.table
+        %tbody
+          - @questions.each do |question|
+            %tr
+              %td
+                %b #{question.content}
+                %br
+                %i.arrow.right.icon
+                #{question.acceptable_answers}
+              %td.right.aligned
+                %button.ui.small.button.set_question_btn{"data-question-id": question.id} Broadcast
+  .two.wide.column
+    .ui.sticky.m-small--top
+      .ui.top.attached.secondary.segment
+        %h3.ui.center.aligned.header SCORE
+      .ui.bottom.attached.segment.m-small--bottom
+        .ui.vertical.fluid.basic.buttons.set_score_actions
+          .ui.icon.button.increase
+            %i.arrow.up.icon
+          .ui.button.number
+            0
+          .ui.icon.button.reset
+            RESET
+      .ui.top.attached.secondary.segment
+        %h3.ui.center.aligned.header EFFECT
+      .ui.bottom.attached.center.aligned.segment
+        %i.bell.outline.large.icon
 
 :javascript
   $(function(){
@@ -29,5 +44,9 @@
       $('.set_question_btn').removeClass('positive');
       $.post(actionPath, {question_id: $(this).data("question-id"), authenticity_token: $csrf});
       $(this).addClass('positive');
+    });
+
+    $('.ui.sticky').sticky({
+      context: ".table"
     });
   })
