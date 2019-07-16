@@ -1,0 +1,9 @@
+:javascript
+  if (#{notice.present?} || #{alert.present?}) {
+    new Noty({
+      type: "#{notice ? 'info' : 'warning'}",
+      text: "#{notice || alert}",
+      theme: 'nest',
+      timeout: 3000
+    }).show();
+  }

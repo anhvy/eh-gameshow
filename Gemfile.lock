@@ -173,6 +173,7 @@ GEM
       railties (= 5.2.3)
       sprockets-rails (>= 2.0.0)
     rails-assets-jquery (3.4.1)
+    rails-assets-noty (3.1.4)
     rails-assets-semantic (2.4.1)
       rails-assets-jquery (>= 1.8)
     rails-dom-testing (2.0.3)
@@ -293,6 +294,7 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)
   rails (~> 5.2.3)
+  rails-assets-noty!
   rails-assets-semantic!
   redis
   rspec-rails

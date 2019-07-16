@@ -15,4 +15,6 @@
 //= require activestorage
 //= require turbolinks
 //= require semantic
-//= require webrtc_sample
+//= require noty
+//= require video_getter
+
