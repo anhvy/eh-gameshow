@@ -1,28 +1,35 @@
+= link_to new_round_path do
+  %button.ui.positive.basic.button
+    %i.icon.plus
+    New Round
+
 .ui.top.attached.segment
-  = link_to new_round_path do
-    %button.ui.positive.basic.button
-      %i.icon.plus
-      New Round
+  %h3.ui.header All Rounds
 
 .ui.bottom.attached.segment
-  %h1 Listing rounds
-
   %table.ui.very.basic.table
     %thead
       %tr
         %th Episode
-        %th Question ids
-        %th
-        %th
+        %th Happen date
+        %th Number of question
+        %th Start on
         %th
 
     %tbody
       - @rounds.each do |round|
         %tr
-          %td= round.episode_id
-          %td= round.question_ids
-          %td.four.wide.right.aligned
-            = link_to 'Show', round, class: "ui mini button"
-            = link_to 'Edit', edit_round_path(round), class: "ui mini blue button"
-            = link_to 'Destroy', round, class: "ui mini orange button", method: :delete, data: { :confirm => 'Are you sure?' }
+          %td ##{round.episode_id}
+          %td= round.episode.happen_date
+          %td= round.question_ids.count
+          %td= Time.current
+          %td.five.wide.right.aligned
+            = link_to round do
+              .ui.mini.positive.button
+                %i.play.icon
+                Operate
+            = link_to 'Setting', edit_round_path(round), class: "ui mini blue button"
+            = link_to round, method: :delete, data: { :confirm => 'Are you sure?' } do
+              .ui.mini.negative.icon.button
+                %i.trash.alternate.icon
 

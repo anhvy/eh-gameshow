@@ -46,3 +46,23 @@
     width: 450px;
   }
 }
+
+
+.set_score_actions {
+  .ui.button {
+    justify-content: center;
+  }
+  .ui.button.number {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .ui.button.increase {
+    color: #0984e3!important;
+    background: #74b9ff!important;
+  }
+  .ui.button.reset {
+    font-weight: bold;
+    color: #e17055!important;
+    background: #fab1a0!important;
+  }
+}
