@@ -7,10 +7,24 @@
           %li= msg
 
   .field
-    = f.label :episode_id
-    = f.number_field :episode_id
+    = f.label "Episode:"
+    = f.select :episode_id, Episode.order(:happen_date).collect { |e| ["##{e.id} - #{e.happen_date.strftime('%d/%m/%Y')}", e.id] }
   .field
-    = f.label :question_ids
-    = f.text_area :question_ids
-  .actions
-    = f.submit 'Save', class: "ui primary button"
+    = f.label "Questions:"
+    .ui.divided.relaxed.list
+      - @questions.each do |q|
+        .item.p-mini--ends
+          .right.floated.content
+            %i.close.red.icon
+          %i.chevron.right.grey.icon
+          .content=q.content
+
+  .ui.divider
+  = f.submit 'Save', class: "ui primary button"
+
+
+:javascript
+  $(function(){
+    $("#round_episode_id").dropdown();
+    $("#questions_field").dropdown();
+  })

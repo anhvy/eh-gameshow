@@ -1,7 +1,10 @@
-%h1 Editing round
+= link_to rounds_path do
+  %button.ui.basic.button
+    %i.arrow.left.icon
+    Back
 
-= render 'form'
+.ui.top.attached.segment
+  %h3.ui.header EDITTING ROUND: #{@round.id}
+.ui.bottom.attached.segment.m-medium--bottom
+  = render 'form'
 
-= link_to 'Show', @round
-\|
-= link_to 'Back', rounds_path
