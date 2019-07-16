@@ -1,12 +1,17 @@
+#noty_layout__topRight {
+  top: 14px;
+  right: 14px;
+}
+
 .noty_theme__nest.noty_bar {
   margin: 0 0 15px 0;
   overflow: hidden;
-  border-radius: 2px;
+  border-radius: 4px;
   position: relative;
   box-shadow: rgba(0, 0, 0, 0.098039) 5px 4px 10px 0;
 
   .noty_body {
-    padding: 10px;
+    padding: 12px;
     font-size: 14px;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, .1);
   }
