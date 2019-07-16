@@ -6,13 +6,23 @@
   font-family: 'Open Sans', sans-serif;
 }
 
+.ui.button {
+  font-weight: 500;
+  text-transform: uppercase;
+  font-family: 'Open Sans', sans-serif;
+}
+
 // Custom style
 
+.sessions,
 .landing_page {
   height: 100vh;
-  display: flex!important;
+  display: flex;
   align-items: center;
+  justify-content: center;
+}
 
+.landing_page {
   .navigation {
     .item {
       display: flex;
@@ -28,5 +38,11 @@
     .item:hover {
       color: #2980b9;
     }
+  }
+}
+
+.sessions {
+  .form-panel {
+    width: 450px;
   }
 }

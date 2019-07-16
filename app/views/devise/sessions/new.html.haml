@@ -1,17 +1,24 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+.ui.container
+  .sessions
+    .form-panel
+      .ui.segment.p-medium--all{class: "#{'attached' if alert}"}
+        %h3.ui.dividing.header.p-mini--bottom ORGANIZER SIGN IN
+        = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "ui form"}) do |f|
+          .field
+            .ui.left.icon.input
+              %i.ui.mail.icon
+              = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email Address"
+          .field
+            .ui.left.icon.input
+              %i.ui.lock.icon
+              = f.password_field :password, autocomplete: "current-password", placeholder: "Password"
+          .field
+            .ui.checkbox
+              = f.check_box :remember_me
+              = f.label :remember_me
+          .field
+            = f.submit "Log in", class: "ui primary fluid button"
+      - if alert
+        .ui.bottom.attached.warning.message
+          %i.ui.exclamation.triangle.icon
+          = alert
