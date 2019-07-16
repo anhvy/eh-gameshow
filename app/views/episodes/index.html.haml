@@ -1,19 +1,16 @@
-.ui.top.attached.segment
-  = link_to new_episode_path do
-    %button.ui.positive.basic.button
-      %i.icon.plus
-      New Episode
-
+.ui.top.attached.secondary.segment
+  .flex-header
+    %h3.ui.header All episodes
+    = link_to new_episode_path do
+      %button.ui.primary.basic.button
+        %i.icon.plus
+        New Episode
 .ui.bottom.attached.segment
-  %h1 Listing episodes
-
   %table.ui.very.basic.table
     %thead
       %tr
         %th Happen date
         %th Team ids
-        %th
-        %th
         %th
 
     %tbody
@@ -22,7 +19,8 @@
           %td= episode.happen_date
           %td= episode.team_ids
           %td.four.wide.right.aligned
-            = link_to 'Show', episode, class: "ui mini button"
             = link_to 'Edit', edit_episode_path(episode), class: "ui mini blue button"
-            = link_to 'Destroy', episode, class: "ui mini orange button", method: :delete, data: { :confirm => 'Are you sure?' }
+            = link_to episode, method: :delete, data: { :confirm => 'Are you sure?' } do
+              .ui.negative.icon.mini.button
+                %i.trash.alternate.icon
 

@@ -1,10 +1,10 @@
-= link_to new_round_path do
-  %button.ui.positive.basic.button
-    %i.icon.plus
-    New Round
-
-.ui.top.attached.segment
-  %h3.ui.header All Rounds
+.ui.top.attached.secondary.segment
+  .flex-header
+    %h3.ui.header All Rounds
+    = link_to new_round_path do
+      %button.ui.primary.basic.button
+        %i.icon.plus
+        New Round
 
 .ui.bottom.attached.segment
   %table.ui.very.basic.table

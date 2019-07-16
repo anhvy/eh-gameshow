@@ -66,3 +66,13 @@
     background: #fab1a0!important;
   }
 }
+
+.flex-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .ui.header {
+    margin: 0;
+  }
+}

@@ -1,8 +1,8 @@
 :javascript
-  if (#{notice.present?} || #{alert.present?}) {
+  if (#{flash[:notice].present?} || #{flash[:alert].present?}) {
     new Noty({
-      type: "#{notice ? 'success' : 'warning'}",
-      text: "#{notice || alert}",
+      type: "#{flash[:notice] ? 'success' : 'warning'}",
+      text: "#{flash[:notice] || flash[:alert]}",
       theme: 'nest',
       timeout: 3000
     }).show();

@@ -1,9 +1,8 @@
+= link_to rounds_path do
+  %button.ui.basic.button
+    %i.icon.arrow.left
+    Back
 .ui.top.attached.segment
-  = link_to rounds_path do
-    %button.ui.basic.button
-      %i.icon.arrow.left
-      Back
+  %h3.ui.header New round
 .ui.bottom.attached.segment
-  %h1 New round
-
   = render 'form'

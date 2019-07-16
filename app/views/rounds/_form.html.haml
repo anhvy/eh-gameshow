@@ -8,16 +8,17 @@
 
   .field
     = f.label "Episode:"
-    = f.select :episode_id, Episode.order(:happen_date).collect { |e| ["##{e.id} - #{e.happen_date.strftime('%d/%m/%Y')}", e.id] }
-  .field
-    = f.label "Questions:"
-    .ui.divided.relaxed.list
-      - @questions.each do |q|
-        .item.p-mini--ends
-          .right.floated.content
-            %i.close.red.icon
-          %i.chevron.right.grey.icon
-          .content=q.content
+    = f.select :episode_id, Episode.order(happen_date: :desc).collect { |e| ["##{e.id} - #{e.happen_date.strftime('%d/%m/%Y')}", e.id] }
+  - unless @round.new_record?
+    .field
+      = f.label "Questions:"
+      .ui.divided.relaxed.list
+        - @questions.each do |q|
+          .item.p-mini--ends
+            .right.floated.content
+              %i.close.red.icon
+            %i.chevron.right.grey.icon
+            .content=q.content
 
   .ui.divider
   = f.submit 'Save', class: "ui primary button"

@@ -1,7 +1,7 @@
 .ui.container
   .sessions
     .form-panel
-      .ui.segment.p-medium--all{class: "#{'attached' if alert}"}
+      .ui.top.attached.segment.p-medium--all
         %h3.ui.dividing.header.p-mini--bottom ORGANIZER SIGN IN
         = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "ui form"}) do |f|
           .field
@@ -17,7 +17,9 @@
               = f.check_box :remember_me
               = f.label :remember_me
           .field
-            = f.submit "Log in", class: "ui primary fluid button"
+            %button.ui.primary.fluid.right.labeled.icon.button{type: "submit"}
+              Log in
+              %i.arrow.right.icon
       - if alert
         .ui.bottom.attached.warning.message
           %i.ui.exclamation.triangle.icon

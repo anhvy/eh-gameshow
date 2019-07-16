@@ -4,7 +4,12 @@
     Back
 
 .ui.top.attached.segment
-  %h3.ui.header EDITTING ROUND: #{@round.id}
+  .flex-header
+    %h3.ui.header EDITTING ROUND: ##{@round.id}
+    = link_to assign_questions_path(round: @round.id) do
+      .ui.basic.primary.button
+        %i.plus.icon
+        Add More Question
 .ui.bottom.attached.segment.m-medium--bottom
   = render 'form'
 

@@ -1,29 +1,31 @@
-.ui.top.attached.segment
-  = link_to new_question_path do
-    %button.ui.positive.basic.button
-      %i.icon.plus
-      New Question
-
+.ui.top.attached.secondary.segment
+  .flex-header
+    %h3.ui.header All questions
+    = link_to new_question_path do
+      %button.ui.primary.basic.button
+        %i.icon.plus
+        New Question
 .ui.bottom.attached.segment
-  %h1 Listing questions
-
   %table.ui.very.basic.table
     %thead
       %tr
-        %th Content
-        %th Acceptable answers
-        %th
-        %th
+        %th Question
+        %th Answers
+        %th Asked at
+        %th Resuse (times)
         %th
 
     %tbody
       - @questions.each do |question|
         %tr
-          %td.eight.wide= question.content
-          -# %td.four.wide= question.acceptable_answers
-          %td.four.wide I won't let you know!
+          %td.six.wide
+            = link_to question.content, question
           %td.four.wide
-          -# %td.four.wide.right.aligned
-          -#   = link_to 'Show', question, class: "ui mini button"
-          -#   = link_to 'Edit', edit_question_path(question), class: "ui mini blue button"
-          -#   = link_to 'Destroy', question, class: "ui mini orange button", method: :delete, data: { :confirm => 'Are you sure?' }
+            = question.acceptable_answers
+          %td.two.wide N/A
+          %td.two.wide N/A
+          %td.two.wide.right.aligned
+            = link_to 'Edit', edit_question_path(question), class: "ui mini blue button"
+            = link_to question, method: :delete, data: { :confirm => 'Are you sure?' } do
+              .ui.mini.negative.icon.button
+                %i.trash.alternate.icon

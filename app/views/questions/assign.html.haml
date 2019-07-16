@@ -1,0 +1,51 @@
+- if @round
+  = link_to edit_round_path(@round) do
+    %button.ui.basic.button
+      %i.icon.arrow.left
+      Back
+
+  .ui.top.attached.secondary.segment
+    %h3.ui.header Assigning question for Round ##{@round.id}
+  .ui.bottom.attached.segment
+    %table.ui.very.basic.table
+      %thead
+        %tr
+          %th Question
+          %th Asked at
+          %th Reuse (times)
+          %th
+      %tbody
+        - @questions.each do |question|
+          %tr
+            %td.eight.wide= question.content
+            %td.four.wide N/A
+            %td.two.wide N/A
+            %td.two.wide.right.aligned
+              = link_to assign_questions_path(round: @round, question: question), method: :post do
+                - if @round.question_ids.include?(question.id.to_s)
+                  .ui.small.right.labeled.icon.button.disabled
+                    Existed
+                    %i.check.icon
+                - else
+                  .ui.small.right.labeled.icon.positive.button
+                    Assigns
+                    %i.chevron.right.icon
+- else
+  = link_to :back do
+    %button.ui.basic.button
+      %i.icon.arrow.left
+      Back
+
+  .ui.center.aligned.segment.p-medium--all
+    %p Seem like you haven't set a round to assign question, but it's okay, you can pick it now:
+    .ui.selection.dropdown.round-select
+      %i.dropdown.icon
+      .default.text Select Round
+      .menu
+        - Round.all.each do |round|
+          %a.item{href: "?round=#{round.id}"} ##{round.id} - #{round.episode.happen_date.strftime("%d/%m/%Y")}
+
+:javascript
+  $(function(){
+    $(".round-select").dropdown();
+  })
