@@ -1,0 +1,23 @@
+.ui.menu.m-small--top
+  = link_to questions_path do
+    .item
+      = image_tag "icon-book.svg", height: 24, class: "m-mini--right"
+      Questions
+  = link_to episodes_path do
+    .item
+      = image_tag "icon-planner.svg", height: 24, class: "m-mini--right"
+      Episodes
+  = link_to rounds_path do
+    .item
+      = image_tag "icon-focus.svg", height: 24, class: "m-mini--right"
+      Rounds
+  = link_to streaming_homes_path, target: "_blank" do
+    .item
+      = image_tag "icon-network.svg", height: 24, class: "m-mini--right"
+      Streaming
+  .right.menu
+    - if signed_in?
+      = link_to destroy_user_session_path, method: :delete  do
+        .item
+          Logout
+          = image_tag "icon-sign-out.svg", height: 24, class: "m-mini--left"

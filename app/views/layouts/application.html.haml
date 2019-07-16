@@ -10,5 +10,6 @@
     %link{href:"https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap&subset=vietnamese", rel: "stylesheet"}
   %body
     = render "layouts/flash" unless controller_name == "sessions"
-    .ui.fluid.container= yield
-    = link_to 'Logout', destroy_user_session_path, method: :delete if signed_in?
+    .ui.container
+      = render "layouts/navbar" if signed_in?
+      .wrapper= yield
