@@ -16,5 +16,6 @@
 //= require turbolinks
 //= require semantic
 //= require noty
+//= require lodash
 //= require video_getter
 

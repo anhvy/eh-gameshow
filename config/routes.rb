@@ -31,7 +31,6 @@ Rails.application.routes.draw do
     collection do
       get 'broadcasted_question'
       get 'current_score'
-      post 'set_broadcast_question'
     end
   end
 end

@@ -51,16 +51,18 @@ class RoundsController < ApplicationController
   def set_broadcast_question
     redis = Redis.new
     redis.publish('round:question_id', params[:question_id])
-    redis.quit
     render status: 200, json: { success: true }
+  ensure
+    redis.quit
   end
 
   def set_broadcast_score
     redis = Redis.new
     score = params[:score] == 'reset' ? 0 : redis.get('round:score') + 1
     redis.publish('round:score', score)
-    redis.quit
     render status: 200, json: { success: true }
+  ensure
+    redis.quit
   end
 
   private

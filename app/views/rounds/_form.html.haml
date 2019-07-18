@@ -11,12 +11,13 @@
     = f.select :episode_id, Episode.order(happen_date: :desc).collect { |e| ["##{e.id} - #{e.happen_date.strftime('%d/%m/%Y')}", e.id] }
   - unless @round.new_record?
     .field
-      = f.label "Questions:"
+      = f.hidden_field :question_ids, id: "question_ids_input"
+      = f.label "Questions (#{@questions.count}):"
       .ui.divided.relaxed.list
         - @questions.each do |q|
-          .item.p-mini--ends
+          .item.question.p-mini--ends
             .right.floated.content
-              %i.close.red.icon
+              %i.close.red.icon{"data-question-id": q.id}
             %i.chevron.right.grey.icon
             .content=q.content
 
@@ -28,4 +29,15 @@
   $(function(){
     $("#round_episode_id").dropdown();
     $("#questions_field").dropdown();
+
+    var question_ids = #{@round.question_ids}
+
+    $(".item.question .close.icon").click(function(){
+      selected_id = $(this).data("question-id").toString();
+      question_ids = _.remove(question_ids, function(item) {
+        return item != selected_id
+      });
+      $("#question_ids_input").val(question_ids);
+      $(this).parents(".item.question").remove();
+    });
   })
