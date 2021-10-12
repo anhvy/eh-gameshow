@@ -1,5 +1,4 @@
 GEM
-  remote: https://rubygems.org/
   remote: https://rails-assets.org/
   specs:
     actioncable (5.2.3)
@@ -155,7 +154,6 @@ GEM
     os (1.0.1)
     pg (1.1.4)
     public_suffix (3.0.3)
-    puma (3.12.1)
     rack (2.0.7)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -277,6 +275,12 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
 
+GEM
+  remote: https://rubygems.org/
+  specs:
+    puma (4.3.9)
+      nio4r (~> 2.0)
+
 PLATFORMS
   ruby
 
@@ -293,7 +297,7 @@ DEPENDENCIES
   jquery-rails
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
-  puma (~> 3.11)
+  puma (~> 4.3)
   rails (~> 5.2.3)
   rails-assets-lodash!
   rails-assets-noty!
